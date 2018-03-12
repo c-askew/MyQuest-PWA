@@ -1,0 +1,124 @@
+nav .logo {
+  color: #444;
+}
+nav {
+  background-color: transparent !important;
+  -webkit-box-shadow :none; -moz-box-shadow: none; box-shadow: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav svg {
+  min-height: 150px;
+  max-height: 18vh;
+}
+
+.nav {
+  height: 15vh;
+}
+
+.nav-logo {
+  position: fixed;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-menu i{
+  color: white;
+  vertical-align: middle;
+}
+
+.contentRoot {
+  margin: 20vh auto 0 auto;
+  width: 100vw;
+  height: 80vh;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+.content-box {
+  color: white;
+  width: 90%;
+  margin: auto;
+  background-color: #4E43F9;
+  border-radius: 20px;
+  text-align: center;
+}
+.content-box h1 {
+  font-size: 2.4rem;
+  margin: 0;
+}
+.content-box h2 {
+  font-size: 1.8rem;
+  margin: 15px;
+}
+.content-box-inner {
+  padding: 25px 10px 25px 10px;
+  margin: 0;
+  width: 80vw;
+}
+
+.game-box {
+  color: #fff;
+  width: 90%;
+  margin: auto;
+  background-color: #4E43F9;
+  border-radius: 20px;
+  text-align: center;
+}
+.game-box h2 {
+  font-size: 1.8rem;
+  margin: 15px;
+}
+.game-box p {
+  width: 80%;
+}
+.game-box-inner {
+  padding: 25px 10px 25px 10px;
+}
+
+.swiper-container {
+    width: 100%;
+}
+
+.swiper-slide-active {
+  width: 300px;
+}
+
+button {
+  border-radius: 20px;
+  border: none;
+  width: 60%;
+  line-height: 3rem;
+  font-size: 1.2rem;
+  background-color: #7B46F9;
+}
+
+button:focus {
+  background-color: #7B46F9;
+}
+
+
+
+@media only screen and (max-width : 992px) {
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}

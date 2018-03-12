@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.alexessaytool" version="1.36.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MyQuest</name>
+    <description>
+       Hybrid Web App for the MyQuest Project.
+    </description>
+    <author email="caskew2154@gmail.com" href="caskew2154@gmail.com">
+        Cameron Askew
+    </author>
+    <content src="index.html" />
+
+<!--plugins-->
+
+<plugin name="cordova-plugin-device" spec="1.1.7" />
+<plugin name="cordova-plugin-network-information" spec="2.0.1" />
+<plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
+<plugin name="cordova-plugin-whitelist" spec="1.2.0" />
+
+	<!--Example white listed servers-->
+    <access origin="*"/>
+    <access origin="https://player.vimeo.com/external/*" />
+    <access origin="https://*://fonts.google.apis.com/*" />
+    <access origin="https://*://d1ajyp3swh7ygp.cloudfront.net/*" />
+    <access origin="https://*://alexessaytool.com/*" />
+    <access origin="https://*://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+    <allow-navigation href="*" />
+    <allow-navigation href="*://fonts.google.apis.com/*" />
+    <allow-navigation href="*://d1ajyp3swh7ygp.cloudfront.net/*" />
+    <allow-navigation href="*://alexessaytool.com/*" />
+    <allow-navigation href="*://player.vimeo.com/external/*" />
+    <allow-navigation href="*://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+<!--Example icons-->
+<!--<platform name="android">
+
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android/mipmap-ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="res/icon/android/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/icon/android/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/ic_launcher.png" />
+
+        <splash density="land-hdpi" src="res/screen/android/res-long-land-hdpi/default.png" />
+        <splash density="land-ldpi" src="res/screen/android/res-long-land-ldpi/default.png" />
+        <splash density="land-mdpi" src="res/screen/android/res-long-land-mdpi/default.png" />
+        <splash density="land-xhdpi" src="res/screen/android/res-long-land-xhdpi/default.png" />
+        <splash density="port-hdpi" src="res/screen/android/res-long-port-hdpi/default.png" />
+        <splash density="port-ldpi" src="res/screen/android/res-long-port-ldpi/default.png" />
+        <splash density="port-mdpi" src="res/screen/android/res-long-port-mdpi/default.png" />
+        <splash density="port-xhdpi" src="res/screen/android/res-long-port-xhdpi/default.png" />
+
+        <allow-navigation href="*://fonts.google.apis.com/*" />
+        <allow-navigation href="*://d1ajyp3swh7ygp.cloudfront.net/*" />
+        <allow-navigation href="*://alexessaytool.com/*" />
+        <allow-navigation href="*://player.vimeo.com/external/*" />
+    </platform>
+-->
+
+
+
+<!--Check latest cli version-->
+    <preference name='phonegap-version' value='cli-8.0.0' />
+
+    <!--delay splash screen for 6 seconds on initial load
+    <preference name="SplashScreenBackgroundColor" value="#3a5169" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="FadeSplashScreenDuration" value="1500"/>-->
+
+</widget>
