@@ -60,16 +60,16 @@ p {
   margin: 0;
 }
 .content-box h2 {
+  position: relative;
   font-size: 1.8rem;
   margin: 15px;
 }
 .content-box-inner {
   padding: 25px 10px 25px 10px;
   margin: 0;
-  width: 80vw;
 }
 
-.game-box {
+/* .game-box {
   color: #fff;
   width: 90%;
   margin: auto;
@@ -86,30 +86,60 @@ p {
 }
 .game-box-inner {
   padding: 25px 10px 25px 10px;
-}
-
-.swiper-container {
-    width: 100%;
-}
-
-.swiper-slide-active {
-  width: 300px;
-}
+  width: 90%;
+} */
 
 button {
-  border-radius: 20px;
-  border: none;
+  color: white;
+  border-radius: 25px;
+  border: 2px solid white;
   width: 60%;
   line-height: 3rem;
   font-size: 1.2rem;
-  background-color: #7B46F9;
+  background-color: #5c71f7;
 }
 
-button:focus {
-  background-color: #7B46F9;
+.buttons-2 {
+  width: 40%;
+  margin: 0 2vw;
 }
 
+/* button:focus {
+  background-color: #7B46F9;
+} */
 
+video {
+  width: 70vw;
+  margin: 0 auto;
+  align-content: center;
+  text-align: center;
+
+}
+
+.choice-box {
+  position: relative;
+  height: 150px;
+  margin-bottom: 5vh;
+  background-size: 1100px;
+}
+
+.choice-label {
+  position: absolute;
+  bottom: 0;
+  font-size: 3.2rem !important;
+  text-shadow: -2px 2px 0px #7B46F9;
+}
+
+.choice-bg {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+}
+
+.choice-box h2 {
+  line-height: 150px;
+  vertical-align: middle;
+}
 
 @media only screen and (max-width : 992px) {
   #index-banner .section {

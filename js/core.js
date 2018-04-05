@@ -3,13 +3,18 @@ document.addEventListener("deviceready", function(){
       alert("Device ready Fire");
  },true);
 
-$(document).on('click', '.instructionsScreen', {}, function(e) {
-  changeAppPage('instructionsScreen');
-  console.log("instructions Screen initialised")
+//Logo link to homeScreen
+ $(document).on('click', '.homePage', {}, function(e) {
+   changeAppPage('homeScreen');
+ });
+//Link to instructionsScreen
+$(document).on('click', '.startGame', {}, function(e) {
+  changeAppPage('startScreen');
+  console.log("startScreen initialised")
 });
 
-$(document).on('click', '.startGame', {}, function(e) {
-  changeAppPage('gameScreen');
+$(document).on('click', '.choicePage', {}, function(e) {
+  changeAppPage('choiceScreen');
 });
 
 function changeAppPage(gameScreen) {
@@ -24,16 +29,22 @@ function changeAppPage(gameScreen) {
       navHashHistory('home');
       break;
 
-      case 'instructionsScreen':
+      case 'startScreen':
       //newView = gameScreen;
       getPartialView(gameScreen);
-      navHashHistory('instructions');
+      navHashHistory('start');
       break;
 
       case 'gameScreen':
       //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('game');
+      break;
+
+      case 'choiceScreen':
+      //newView = gameScreen;
+      getPartialView(gameScreen);
+      navHashHistory('choice');
       break;
     }
 }
