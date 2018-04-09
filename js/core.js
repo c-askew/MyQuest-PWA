@@ -7,6 +7,11 @@ document.addEventListener("deviceready", function(){
  $(document).on('click', '.homePage', {}, function(e) {
    changeAppPage('homeScreen');
  });
+
+ $(document).on('click', '.accountButton', {}, function(e) {
+   changeAppPage('loginScreen');
+ });
+
 //Link to instructionsScreen
 $(document).on('click', '.startGame', {}, function(e) {
   changeAppPage('startScreen');
@@ -45,6 +50,12 @@ function changeAppPage(gameScreen) {
       //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('choice');
+      break;
+
+      case 'loginScreen':
+      //newView = gameScreen;
+      getPartialView(gameScreen);
+      navHashHistory('login');
       break;
     }
 }
