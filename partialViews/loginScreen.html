@@ -105,6 +105,7 @@ function extLogin(provider) {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser) {
     console.log(firebaseUser);
+    changeAppPage('accountScreen');
     btnLogin.classList.add('hide');
     btnSignup.classList.add('hide');
     btnLogout.classList.remove('hide');

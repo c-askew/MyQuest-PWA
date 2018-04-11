@@ -29,33 +29,33 @@ function changeAppPage(gameScreen) {
     $(".contentRoot").empty();
     switch (gameScreen) {
       case 'homeScreen':
-      //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('home');
       break;
 
       case 'startScreen':
-      //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('start');
       break;
 
       case 'gameScreen':
-      //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('game');
       break;
 
       case 'choiceScreen':
-      //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('choice');
       break;
 
       case 'loginScreen':
-      //newView = gameScreen;
       getPartialView(gameScreen);
       navHashHistory('login');
+      break;
+
+      case 'accountScreen':
+      getPartialView(gameScreen);
+      navHashHistory('account');
       break;
     }
 }

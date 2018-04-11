@@ -1,0 +1,48 @@
+<div class="content-box">
+  <div id="accountInfo">
+
+  </div>
+  <button class="logout" id="logout">Logout</button>
+</div>
+
+<script>
+  var database = firebase.database();
+  var user = firebase.auth().currentUser;
+  var name, email, photoUrl, uid, emailVerified;
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;
+
+  initUser(uid,name,email,photoUrl);
+  // console.log("Name: " + name)
+  // console.log("Email: " + email)
+  // console.log("PhotoURL: " + photoUrl)
+  // console.log("UID: " + uid)
+
+function initUser(userId, name, email, photo) {
+  //Function to initialise new users in the database - checks that they don't currently exist
+  var userRef = firebase.database().ref('users/' + userId);
+  if (userRef === null) {
+    console.log("initUser ran")
+    userRef.set({
+      username: name,
+      email: email,
+      photoUrl: photo
+    });
+  }
+  displayProfile();
+}
+
+function displayProfile() {
+  var profileBox = document.getElementById('accountInfo');
+  console.log("Here")
+  $("<div>", {id: 'userInfo', class:'profileValue'})
+    .append("<h2>" + name + "</h2>")
+    .append("<p>" + email + "</p>")
+    .append("<img src=\"" + photoUrl +"\"/>")
+    .appendTo(profileBox)
+}
+
+</script>
