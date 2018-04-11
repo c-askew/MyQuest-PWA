@@ -76,8 +76,8 @@ input:-webkit-autofill {
     -webkit-animation-fill-mode: both;
 }
 
-#btnGoogle {
-  width: 191px;
+.loginHandler {
+  width: 100px;
 }
 
 .externalBtns {
