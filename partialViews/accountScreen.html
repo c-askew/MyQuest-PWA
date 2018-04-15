@@ -2,10 +2,44 @@
   <div id="accountInfo">
 
   </div>
-  <button class="logout" id="logout">Logout</button>
+  <div class="viewForm">
+    <div class="input-field">
+          <label>Disabled</label>
+          <input value="I am not editable" id="disabled" type="text" class="validate">
+
+        </div>
+  </div>
+  <div class="editForm">
+    <div class="selectRow">
+      <label class="selectLabel">Select a School</label>
+      <select>
+        <optgroup label="Select">
+          <option value="">Select One...</option>
+          <option value="1">Computing, Media & The Arts</option>
+          <option value="2">Science, Engineering & Design</option>
+          <option value="3">Teesside University Business School</option>
+          <option value="4">Social Sciences, Humanities & Law</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+  <div class="profileBtns">
+    <button class="buttons-2" id="edit">Edit</button>
+    <button class="buttons-2" id="logout">Logout</button>
+  </div>
 </div>
 
 <script>
+$(document).ready(function() {
+            $('select').material_select();
+         });
+  const btnLogout = document.getElementById("logout");
+  btnLogout.addEventListener('click', e => {
+    firebase.auth().signOut();
+    changeAppPage("homeScreen");
+  })
+
   var database = firebase.database();
   var user = firebase.auth().currentUser;
   var name, email, photoUrl, uid, emailVerified;
@@ -14,6 +48,7 @@
   photoUrl = user.photoURL;
   emailVerified = user.emailVerified;
   uid = user.uid;
+  const fallbackImg = "https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/profile_pic_ic5t.svg";
 
   initUser(uid,name,email,photoUrl);
   // console.log("Name: " + name)
@@ -36,13 +71,16 @@ function initUser(userId, name, email, photo) {
 }
 
 function displayProfile() {
+  console.log("display profile")
   var profileBox = document.getElementById('accountInfo');
-  console.log("Here")
+  console.log(photoUrl)
   $("<div>", {id: 'userInfo', class:'profileValue'})
-    .append("<h2>" + name + "</h2>")
-    .append("<p>" + email + "</p>")
-    .append("<img src=\"" + photoUrl +"\"/>")
+    .append("<h2 id=\"userName\">" + name + "</h2>")
+    .append("<img id=\"userPhoto\" src=\"" + photoUrl +"\" onerror=\"this.src=\'" + fallbackImg + "\';\"/>")
+    .append("<p id=\"userEmail\">" + email + "</p>")
     .appendTo(profileBox)
 }
+
+
 
 </script>

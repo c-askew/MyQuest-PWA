@@ -99,6 +99,36 @@ input:-webkit-autofill {
   display: none;
 }
 
+ /*Account Page*/
+/*            */
+#userInfo {
+  padding: 25px;
+}
+
+#userPhoto {
+  width: 150px;
+  position: relative;
+  border: 3px solid white;
+  border-radius: 75px;
+}
+
+.selectRow {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.selectLabel {
+  color: #f1a513;
+  font-size: 1rem;
+}
+
+.profileBtns {
+  margin-bottom: 25px;
+}
+
+.input-field {
+  width: 40%;
+}
 
 /* Core CSS*/
 .content-box {
