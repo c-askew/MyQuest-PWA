@@ -33,6 +33,12 @@ p {
   line-height: 2rem;
 }
 
+.preload {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
 .button-menu i{
   color: white;
   vertical-align: middle;

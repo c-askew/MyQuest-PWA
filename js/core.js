@@ -25,7 +25,7 @@ $(document).on('click', '.choicePage', {}, function(e) {
 function changeAppPage(gameScreen) {
     //the screen to goto
     var gameScreen;
-    // console.log("changeAppPage called with " + gameScreen + " as partial view");
+    console.log("changeAppPage called with " + gameScreen + " as partial view");
     $(".contentRoot").empty();
     switch (gameScreen) {
       case 'homeScreen':
@@ -63,7 +63,7 @@ function changeAppPage(gameScreen) {
 //Get content
 function getPartialView(screen) {
   var contentLoaded ;
-  // console.log("screen content injection for "+screen);
+  console.log("screen content injection for "+screen);
   $.get('partialViews/'+screen+'.html', function(data) {
     //inject the content into the DOM
     $(".contentRoot").append(data);

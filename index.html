@@ -33,12 +33,34 @@
       <a href="#" class="nav-logo homePage"><img src="assets/myquest-logo.png" height="100px"></a>
     </nav>
 
-    <div class="contentRoot"></div>
+    <!-- <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div> -->
+
+
+    <div class="contentRoot">
+      <div class="preload preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!--  Scripts-->
-    <script src="js/init.js"></script>
-    <script src="js/core.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
     // Initialize Firebase
@@ -52,5 +74,7 @@
     };
     firebase.initializeApp(config);
     </script>
+    <script src="js/init.js"></script>
+    <script src="js/core.js"></script>
   </body>
 </html>

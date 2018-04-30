@@ -2,14 +2,17 @@
   <div id="accountInfo">
 
   </div>
-  <div class="viewForm">
+  <div class="viewForm" id="viewForm">
     <div class="input-field">
-          <label>Disabled</label>
-          <input value="I am not editable" id="disabled" type="text" class="validate">
-
-        </div>
+      <label class="active">Your School:</label>
+      <input value="Unselected" type="text" readonly>
+    </div>
+    <div class="input-field">
+      <label class="active">Group Name:</label>
+      <input value="Unselected" type="text" readonly>
+    </div>
   </div>
-  <div class="editForm">
+  <div class="editForm hide" id="editForm">
     <div class="selectRow">
       <label class="selectLabel">Select a School</label>
       <select>
@@ -22,18 +25,40 @@
         </optgroup>
       </select>
     </div>
+    <div class="input-field">
+      <label class="active">Group Name:</label>
+      <input value="Unselected" type="text">
+    </div>
   </div>
 
   <div class="profileBtns">
     <button class="buttons-2" id="edit">Edit</button>
+    <button class="buttons-2 hide" id="save">Save Changes</button>
     <button class="buttons-2" id="logout">Logout</button>
   </div>
 </div>
 
 <script>
-$(document).ready(function() {
-            $('select').material_select();
-         });
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
+  const btnEdit = document.getElementById("edit");
+  const editForm = document.getElementById("editForm");
+  const btnSave = document.getElementById("save");
+  const viewForm = document.getElementById("viewForm");
+  btnEdit.addEventListener('click', e => {
+    editForm.classList.remove('hide');
+    viewForm.classList.add('hide');
+    btnSave.classList.remove('hide');
+  })
+
+  btnSave.addEventListener('click', e => {
+    editForm.classList.add('hide');
+    viewForm.classList.remove('hide');
+    btnSave.classList.add('hide');
+  })
+
   const btnLogout = document.getElementById("logout");
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
@@ -56,9 +81,24 @@ $(document).ready(function() {
   // console.log("PhotoURL: " + photoUrl)
   // console.log("UID: " + uid)
 
+// function userExistsCallback(userId, exists) {
+//   if (exists) {
+//     alert('user ' + userId + ' exists!');
+//   } else {
+//     alert('user ' + userId + ' does not exist!');
+//   }
+// }
+
+
 function initUser(userId, name, email, photo) {
+  console.log("initUser start");
   //Function to initialise new users in the database - checks that they don't currently exist
   var userRef = firebase.database().ref('users/' + userId);
+  userRef.once('value', function(snapshot){
+    var exists = (snapshot.val() !== null);
+    userExistsCallback(userId, exists);
+    //https://gist.github.com/anantn/4323949
+  })
   if (userRef === null) {
     console.log("initUser ran")
     userRef.set({
