@@ -16,5 +16,5 @@ else {
 });
 
 $(function(){
-      $('.button-collapse').sideNav();
+  $('.button-collapse').sideNav();
 }) // end of jQuery name space

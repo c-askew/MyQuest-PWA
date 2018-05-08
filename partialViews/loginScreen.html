@@ -15,12 +15,12 @@
     <button class="logout hide" id="logout">Logout</button>
   </div>
   <div class="externalBtns">
-    <h3>Or Login via <br/>Google | Facebook | Twitter | Github</h3>
+    <p>Or Login via <br/>Google | Facebook | Twitter</p>
     <img class="loginHandler" id="btnGoogle" src="assets/googleBtn.png" />
     <img class="loginHandler" id="btnFacebook" src="assets/facebookBtn.png" />
     <img class="loginHandler" id="btnTwitter" src="assets/twitterBtn.png" />
-    <img class="loginHandler" id="btnGithub" src="assets/githubBtn.png" />
-  </div>
+    <!-- <img class="loginHandler" id="btnGithub" src="assets/githubBtn.png" />
+  </div> -->
 </div>
 
 <script>
@@ -54,17 +54,16 @@ btnLogout.addEventListener('click', e => {
 var googProvider = new firebase.auth.GoogleAuthProvider();
 var fbProvider = new firebase.auth.FacebookAuthProvider();
 var twitProvider = new firebase.auth.TwitterAuthProvider();
-var gitProvider = new firebase.auth.GithubAuthProvider();
+// var gitProvider = new firebase.auth.GithubAuthProvider();
 
 btnGoogle.addEventListener('click', e => extLogin(googProvider))
 btnFacebook.addEventListener('click', e => extLogin(fbProvider))
 btnTwitter.addEventListener('click', e => extLogin(twitProvider))
-btnGithub.addEventListener('click', e => extLogin(gitProvider))
+// btnGithub.addEventListener('click', e => extLogin(gitProvider))
 //Facebook Login
 
 function extLogin(provider) {
   firebase.auth().signInWithRedirect(provider);
-  console.log("Pre-Beep")
   firebase.auth().getRedirectResult().then(result => {
   var user = result.user;
   if (result.credential) {
@@ -88,7 +87,6 @@ function extLogin(provider) {
   // ...
 });
 };
-
 
 
 //Realtime Listener to manage elements based on current status

@@ -15,7 +15,7 @@
   <div class="editForm hide" id="editForm">
     <div class="selectRow">
       <label class="selectLabel">Select a School</label>
-      <select>
+      <select id="schoolSelect">
         <optgroup label="Select">
           <option value="">Select One...</option>
           <option value="1">Computing, Media & The Arts</option>
@@ -27,7 +27,7 @@
     </div>
     <div class="input-field">
       <label class="active">Group Name:</label>
-      <input value="Unselected" type="text">
+      <input id="groupInput" value="Unselected" type="text">
     </div>
   </div>
 
@@ -54,6 +54,7 @@
   })
 
   btnSave.addEventListener('click', e => {
+    saveChanges();
     editForm.classList.add('hide');
     viewForm.classList.remove('hide');
     btnSave.classList.add('hide');
@@ -74,6 +75,7 @@
   emailVerified = user.emailVerified;
   uid = user.uid;
   const fallbackImg = "https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/profile_pic_ic5t.svg";
+  var userRef = firebase.database().ref('users/' + uid);
 
   initUser(uid,name,email,photoUrl);
   // console.log("Name: " + name)
@@ -81,33 +83,35 @@
   // console.log("PhotoURL: " + photoUrl)
   // console.log("UID: " + uid)
 
-// function userExistsCallback(userId, exists) {
-//   if (exists) {
-//     alert('user ' + userId + ' exists!');
-//   } else {
-//     alert('user ' + userId + ' does not exist!');
-//   }
-// }
-
-
 function initUser(userId, name, email, photo) {
   console.log("initUser start");
-  //Function to initialise new users in the database - checks that they don't currently exist
-  var userRef = firebase.database().ref('users/' + userId);
-  userRef.once('value', function(snapshot){
-    var exists = (snapshot.val() !== null);
-    userExistsCallback(userId, exists);
-    //https://gist.github.com/anantn/4323949
-  })
-  if (userRef === null) {
-    console.log("initUser ran")
     userRef.set({
       username: name,
       email: email,
       photoUrl: photo
     });
-  }
+  getData();
   displayProfile();
+}
+
+function getData() {
+  return userRef.once('value').then(function(snapshot) {
+    var school = snapshot.val().school;
+    var groupName = snapshot.val().groupName;
+  // ...
+});
+}
+
+function saveChanges() {
+  var schoolSelection = document.getElementById("schoolSelect");
+  var school = schoolSelection.options[schoolSelection.selectedIndex].text;
+  var groupName = document.getElementById("groupInput").value;
+  console.log(school)
+  console.log(groupName)
+  userRef.push({
+    school: school,
+    groupName: groupName
+  })
 }
 
 function displayProfile() {
@@ -116,6 +120,7 @@ function displayProfile() {
   console.log(photoUrl)
   $("<div>", {id: 'userInfo', class:'profileValue'})
     .append("<h2 id=\"userName\">" + name + "</h2>")
+    //Apply Image with Fallback image using onerror value
     .append("<img id=\"userPhoto\" src=\"" + photoUrl +"\" onerror=\"this.src=\'" + fallbackImg + "\';\"/>")
     .append("<p id=\"userEmail\">" + email + "</p>")
     .appendTo(profileBox)
