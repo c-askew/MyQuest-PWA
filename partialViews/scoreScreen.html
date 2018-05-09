@@ -1,0 +1,51 @@
+<div class="content-box">
+  <div class="content-box-inner">
+    <h2>Leaderboard</h2>
+    <p>Lorem ipsum dolor sit amet</p>
+
+    <div class="input-field">
+      <label class="active">Enter your time:</label>
+      <input id="scoreInput" value="00:00" type="text">
+    </div>
+    <button id="submitScore">Submit Score</button>
+  </div>
+</div>
+
+<script>
+var database = firebase.database();
+var user = firebase.auth().currentUser;
+var uid = user.uid;
+var scoreInput = document.getElementById("scoreInput");
+var btnScore = document.getElementById("submitScore");
+
+btnScore.addEventListener('click', e => { submitScore(); });
+
+function submitScore() {
+  if (user) {
+    var userRef = firebase.database().ref('users/' + uid);
+    return userRef.once('value').then(function(snapshot) {
+      if (snapshot.exists()) {
+        var groupName = snapshot.val().information.groupName;
+        var groupScore = scoreInput.value;
+        setScore(groupName, groupScore);
+      }
+    });
+  }
+  else {
+    alert("You must be logged in to save your time.");
+  }
+}
+
+function setScore(group, score) {
+  var scoreRef = firebase.database().ref('scores/' + group);
+  scoreRef.set({
+    groupName: group,
+    time: score
+  });
+}
+
+function displayScores() {
+  return userRef.once('value').then(function(snapshot) {
+    if (snapshot.exists()) {
+}
+</script>

@@ -5,11 +5,11 @@
   <div class="viewForm" id="viewForm">
     <div class="input-field">
       <label class="active">Your School:</label>
-      <input value="Unselected" type="text" readonly>
+      <input id="schoolOutput" value="Unselected" type="text" readonly>
     </div>
     <div class="input-field">
       <label class="active">Group Name:</label>
-      <input value="Unselected" type="text" readonly>
+      <input id="groupOutput" value="Unselected" type="text" readonly>
     </div>
   </div>
   <div class="editForm hide" id="editForm">
@@ -32,9 +32,10 @@
   </div>
 
   <div class="profileBtns">
-    <button class="buttons-2" id="edit">Edit</button>
-    <button class="buttons-2 hide" id="save">Save Changes</button>
-    <button class="buttons-2" id="logout">Logout</button>
+    <button class="buttons-2 buttons-profile " id="edit">Edit</button>
+    <button class="buttons-2 buttons-profile hide" id="cancel">Cancel Changes</button>
+    <button class="buttons-2 buttons-profile hide" id="save">Save Changes</button>
+    <button class="buttons-2 buttons-profile " id="logout">Logout</button>
   </div>
 </div>
 
@@ -43,24 +44,46 @@
     $('select').material_select();
   });
 
+  const schoolInput = document.getElementById("schoolSelect");
+  const groupInput = document.getElementById("groupInput");
+  const schoolOutput = document.getElementById("schoolOutput");
+  const groupOutput = document.getElementById("groupOutput");
+
   const btnEdit = document.getElementById("edit");
   const editForm = document.getElementById("editForm");
   const btnSave = document.getElementById("save");
+  const btnCancel = document.getElementById("cancel");
+  const btnLogout = document.getElementById("logout");
   const viewForm = document.getElementById("viewForm");
   btnEdit.addEventListener('click', e => {
     editForm.classList.remove('hide');
     viewForm.classList.add('hide');
+    btnEdit.classList.add('hide');
+    btnLogout.classList.add('hide');
     btnSave.classList.remove('hide');
+    btnCancel.classList.remove('hide');
+    setInfo();
+  })
+
+  btnCancel.addEventListener('click', e => {
+    editForm.classList.add('hide');
+    viewForm.classList.remove('hide');
+    btnEdit.classList.remove('hide');
+    btnLogout.classList.remove('hide');
+    btnSave.classList.add('hide');
+    btnCancel.classList.add('hide');
   })
 
   btnSave.addEventListener('click', e => {
-    saveChanges();
     editForm.classList.add('hide');
     viewForm.classList.remove('hide');
+    btnEdit.classList.remove('hide');
+    btnLogout.classList.remove('hide');
     btnSave.classList.add('hide');
+    btnCancel.classList.remove('hide');
+    saveChanges();
   })
 
-  const btnLogout = document.getElementById("logout");
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
     changeAppPage("homeScreen");
@@ -68,20 +91,17 @@
 
   var database = firebase.database();
   var user = firebase.auth().currentUser;
-  var name, email, photoUrl, uid, emailVerified;
+  var name, email, photoUrl, uid;
   name = user.displayName;
   email = user.email;
   photoUrl = user.photoURL;
   emailVerified = user.emailVerified;
   uid = user.uid;
   const fallbackImg = "https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/profile_pic_ic5t.svg";
-  var userRef = firebase.database().ref('users/' + uid);
+  var userRef = firebase.database().ref('users/' + uid + '/profile');
+  var infoRef = firebase.database().ref('users/' + uid + '/information');
 
   initUser(uid,name,email,photoUrl);
-  // console.log("Name: " + name)
-  // console.log("Email: " + email)
-  // console.log("PhotoURL: " + photoUrl)
-  // console.log("UID: " + uid)
 
 function initUser(userId, name, email, photo) {
   console.log("initUser start");
@@ -90,42 +110,47 @@ function initUser(userId, name, email, photo) {
       email: email,
       photoUrl: photo
     });
-  getData();
   displayProfile();
+  setInfo();
 }
 
-function getData() {
-  return userRef.once('value').then(function(snapshot) {
-    var school = snapshot.val().school;
-    var groupName = snapshot.val().groupName;
-  // ...
-});
-}
-
-function saveChanges() {
-  var schoolSelection = document.getElementById("schoolSelect");
-  var school = schoolSelection.options[schoolSelection.selectedIndex].text;
-  var groupName = document.getElementById("groupInput").value;
-  console.log(school)
-  console.log(groupName)
-  userRef.push({
-    school: school,
-    groupName: groupName
-  })
-}
-
-function displayProfile() {
-  console.log("display profile")
+function displayProfile(school, group) {
   var profileBox = document.getElementById('accountInfo');
-  console.log(photoUrl)
+  //Populates the Profile using information collected from the current User.
   $("<div>", {id: 'userInfo', class:'profileValue'})
     .append("<h2 id=\"userName\">" + name + "</h2>")
-    //Apply Image with Fallback image using onerror value
+    //Apply photoUrl or apply Fallback image using onerror property
     .append("<img id=\"userPhoto\" src=\"" + photoUrl +"\" onerror=\"this.src=\'" + fallbackImg + "\';\"/>")
     .append("<p id=\"userEmail\">" + email + "</p>")
     .appendTo(profileBox)
-}
+  }
 
+  function setInfo() {
+    //Snapshots the information object from database and applies any pre-existing information to the forms.
+    return infoRef.once('value').then(function(snapshot) {
+      if (snapshot.exists()) {
+        schoolOutput.value = snapshot.val().school;
+        groupOutput.value = snapshot.val().groupName;
+        schoolInput.value = snapshot.val().schoolValue;
+        groupInput.value = snapshot.val().groupName;
+      };
+    });
+  }
+
+  function saveChanges() {
+    var school = schoolInput.options[schoolInput.selectedIndex].text;
+    var schoolValue = schoolInput.options[schoolInput.selectedIndex].value;
+    var groupName = groupInput.value;
+    console.log(school)
+    console.log(groupName)
+
+    infoRef.set({
+      school: school,
+      schoolValue: schoolValue,
+      groupName: groupName
+    })
+    setInfo();
+  }
 
 
 </script>

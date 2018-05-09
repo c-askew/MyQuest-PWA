@@ -14,16 +14,11 @@ document.addEventListener("deviceready", function(){
 
 //Link to instructionsScreen
 $(document).on('click', '.startGame', {}, function(e) {
-  changeAppPage('startScreen');
-  console.log("startScreen initialised")
-});
-
-$(document).on('click', '.choicePage', {}, function(e) {
   changeAppPage('choiceScreen');
 });
 
 function changeAppPage(gameScreen) {
-    //the screen to goto
+    //
     var gameScreen;
     console.log("changeAppPage called with " + gameScreen + " as partial view");
     $(".contentRoot").empty();
@@ -31,11 +26,6 @@ function changeAppPage(gameScreen) {
       case 'homeScreen':
       getPartialView(gameScreen);
       navHashHistory('home');
-      break;
-
-      case 'startScreen':
-      getPartialView(gameScreen);
-      navHashHistory('start');
       break;
 
       case 'gameScreen':
@@ -46,6 +36,31 @@ function changeAppPage(gameScreen) {
       case 'choiceScreen':
       getPartialView(gameScreen);
       navHashHistory('choice');
+      break;
+
+      case 'libraryScreen':
+      getPartialView(gameScreen);
+      navHashHistory('library');
+      break;
+
+      case 'olympiaScreen':
+      getPartialView(gameScreen);
+      navHashHistory('olympia');
+      break;
+
+      case 'servicesScreen':
+      getPartialView(gameScreen);
+      navHashHistory('services');
+      break;
+
+      case 'instructionsScreen':
+      getPartialView(gameScreen);
+      navHashHistory('instructions');
+      break;
+
+      case 'scoreScreen':
+      getPartialView(gameScreen);
+      navHashHistory('score');
       break;
 
       case 'loginScreen':

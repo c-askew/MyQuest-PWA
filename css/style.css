@@ -1,3 +1,12 @@
+@font-face {
+font-family: "Facile Sans";
+src: url("https://s6110146.scm.tees.ac.uk/HAD_18/MyQuest/fonts/facile_sans-webfont.eot");
+src:
+url("https://s6110146.scm.tees.ac.uk/HAD_18/MyQuest/fonts/facile_sans-webfont.woff") format("woff"),
+url("https://s6110146.scm.tees.ac.uk/HAD_18/MyQuest/fonts/facile_sans-webfont.otf") format("opentype"),
+url("https://s6110146.scm.tees.ac.uk/HAD_18/MyQuest/fonts/facile_sans-webfont.svg#filename") format("svg");
+}
+
 nav .logo {
   color: #444;
 }
@@ -8,6 +17,7 @@ nav {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 50;
 }
 nav svg {
   min-height: 150px;
@@ -118,18 +128,19 @@ input:-webkit-autofill {
   border-radius: 75px;
 }
 
+
 .selectRow {
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
+}
+
+.select-wrapper span.caret {
+  color: white;
 }
 
 .selectLabel {
   color: #f1a513;
   font-size: 1rem;
-}
-
-.profileBtns {
-  margin-bottom: 25px;
 }
 
 .input-field {
@@ -159,26 +170,6 @@ input:-webkit-autofill {
   margin: 0;
 }
 
-/* .game-box {
-  color: #fff;
-  width: 90%;
-  margin: auto;
-  background-color: #4E43F9;
-  border-radius: 20px;
-  text-align: center;
-}
-.game-box h2 {
-  font-size: 1.8rem;
-  margin: 15px;
-}
-.game-box p {
-  width: 80%;
-}
-.game-box-inner {
-  padding: 25px 10px 25px 10px;
-  width: 90%;
-} */
-
 button {
   color: white;
   border-radius: 25px;
@@ -195,6 +186,11 @@ button {
   margin: 0 2vw;
 }
 
+.buttons-profile {
+  width: 40%;
+  margin: 0 2vw 15px;
+}
+
 /* button:focus {
   background-color: #7B46F9;
 } */
@@ -202,11 +198,9 @@ button {
 
 /*Game Pages*/
 video {
-  width: 70vw;
   margin: 0 auto;
   align-content: center;
   text-align: center;
-
 }
 
 .choice-box {
@@ -217,10 +211,12 @@ video {
 }
 
 .choice-label {
+  font-family: 'Facile Sans', Arial, sans-serif;
   position: absolute;
+  color: white;
   bottom: 0;
   font-size: 3.2rem !important;
-  text-shadow: -2px 2px 0px #7B46F9;
+  -webkit-text-stroke: 2px #f1a513;
 }
 
 .choice-bg {
