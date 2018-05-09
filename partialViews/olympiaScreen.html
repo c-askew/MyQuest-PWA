@@ -1,13 +1,62 @@
 <div class="content-box">
   <div class="content-box-inner">
     <h2>The Olympia Building</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p>Teesside Sport provides top-quality facilities and professional advice for beginners and experienced competitors - don't miss out while you're here.
+      We have everything you need to enjoy sport and well-being at Teesside – whether you are an elite athlete competing at international level, or you just want to try a new sport or volunteer – you’ll find what you’re looking for with Teesside Sport.
     </p>
+
+    <ul class="collapsible">
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">account_balance</i>Olympia Sports Complex</div>
+      <div class="collapsible-body"><span>Sport on campus is centered in our Olympia sports complex, which has a large sports hall for major tournaments - 500 spectator capacity.
+        We have superb facilities for sport including:<br /><br />
+
+        > Top of the range sport & exercise labs<br />
+        > Temperature controlled environmental chamber<br />
+        > Climbing wall<br />
+        > Floodlit, artificial turf pitch<br />
+        > Sauna and steam room<br />
+        > Fitness suite<br />
+        > Squash courts<br />
+        > Two sports halls.<br />
+      </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">fitness_center</i>The Gym</div>
+      <div class="collapsible-body"><span>Putting health and well-being at the heart of the Middlesbrough campus and University life,
+        this attractive, high-quality facility provides state-of-the-art cardiovascular and resistance fitness and free weights areas,
+        a sprint track, multi-purpose studios, a specialist treatment area for use by students and staff.<br /><br />
+
+        > 30% bigger floor space with state-of-the-art equipment<br />
+        > Sprint track, free weights areas, cardio equipment and flexible studio spaces<br />
+        > Accessible 7 days a week<br />
+        > Membership from just £2.60 per week*<br />
+        > Membership includes unlimited access to The Gym and exercise classes (including Pilates, Yoga, Zumba and Metafit), climbing wall, squash and badminton courts, and a personalised exercise programme.<br />
+        > You can also swim free at the Neptune Centre , just 2 miles away.<br />
+
+
+        Membership is currently £100 per year and goes down in price after each term (valid Monday 18 September 2017 – Sunday 16 September 2018).
+        You can sign up online <a href="https://sports.tees.ac.uk/memberships/personsearch.aspx" target="_blank">by tapping here.</a>
+      </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">healing</i>Injury Clinic</div>
+      <div class="collapsible-body"><span>At Teesside University Sports Injury Centre we believe that everyone should have access to the type of treatment that usually only
+        full-time professional athletes receive. We ensure that all clients receive the best possible treatment relevant to their
+        condition by providing treatments at a variety of locations around the Tees Valley area.<br /><br />
+        Find out more <a href="http://teessidesportsinjury.co.uk/" target="_blank">by tapping here.</a>
+      </span></div>
+    </li>
+  </ul>
+
     <button class="content-button waves-effect waves-light z-depth-3" id="startGame" type="submit" name="action">Start the Game!<i class="mdi-content-send right"></i>
     </button>
   </div>
 </div>
 
 <script>
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
   document.getElementById("startGame").addEventListener('click', e => { changeAppPage('instructionsScreen') });
 </script>

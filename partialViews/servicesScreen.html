@@ -1,13 +1,92 @@
 <div class="content-box">
   <div class="content-box-inner">
-    <h2>The Student Services Building</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <h2>Student Services</h2>
+    <p>We're a close knit community and pride ourselves on the accessibility and sensitivity of our support services.
+      If you need advice and guidance you can find us in the Student Centre,
+      which has relocated to the <a href="https://www.tees.ac.uk/docs/docrepo/about/CampusMap.pdf" target="_blank">Europa building.</a>
     </p>
+    <table summary="Student Services opening hours" class="data" cellpadding="0" cellspacing="0">
+					<caption class="heading">
+					Student Services are available:
+					</caption>
+					<thead>
+						<tr>
+							<th id="t1" abbr="School">Day</th>
+							<th id="t2" abbr="Miles">Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="highlight">
+							<td headers="t1">Monday</td>
+							<td headers="t2">8.30am – 5.00pm </td>
+						</tr>
+						<tr>
+							<td headers="t1">Tuesday</td>
+							<td headers="t2">8.30am – 5.00pm </td>
+						</tr>
+						<tr class="highlight">
+							<td headers="t1">Wednesday</td>
+							<td headers="t2">9.30am – 5.00pm </td>
+						</tr>
+						<tr>
+							<td headers="t1">Thursday</td>
+							<td headers="t2">8.30am – 5.00pm </td>
+						</tr>
+						<tr class="highlight">
+							<td headers="t1">Friday</td>
+							<td headers="t2">8.30am – 4.30pm</td>
+						</tr>
+					</tbody>
+				</table>
+    <p>
+      Contact us via:<br />
+        <i class="material-icons">call</i> 01642 342277<br />
+        <i class="material-icons">alternate_email</i> studenthelp@tees.ac.uk
+    </p>
+
+    <ul class="collapsible">
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">healing</i>Student Health</div>
+      <div class="collapsible-body"><span>We can provide you with support and advice on all health issues plus we offer services to improve your well-being.
+        <br /> For More information, <a href="https://www.tees.ac.uk/sections/studentsupport/student_health.cfm" target="_blank">tap here</a>
+      </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">home</i>Accommodation</div>
+      <div class="collapsible-body"><span>Teesside University is a safe and friendly place where you will soon feel at home. We offer a range of great accommodation at competitive prices, all based within walking distance of the campus.
+        Whatever your choice, whether you want a halls experience, your own en-suite or a shared house, we have a suitable place for you.
+        We'll make finding your home from home as simple as possible with a detailed overview of each residency and a number of student views sharing their own experiences.
+        And applying couldn't be easier - it's all done online.
+
+          <br /> For More information, <a href="https://www.tees.ac.uk/sections/accommodation/" target="_blank">tap here</a>
+      </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">attach_money</i>Finance</div>
+      <div class="collapsible-body"><span>For help with financial issues, please contact us via:<br />
+          <i class="material-icons">call</i> 01642 342171<br />
+          <i class="material-icons">alternate_email</i> finance@tees.ac.uk
+        </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">live_help</i>Libguides</div>
+      <div class="collapsible-body"><span>Libguides is our A-Z of hundreds of guides published by us to help you with whatever
+        library needs or queries you may have. If you've got a question, this is the place to start.
+        <br><br>
+        <a href="http://libguides.tees.ac.uk/?b=g&d=a" target="_blank"><button>Go to Libguides</button></a>
+        </span>
+        </div>
+    </li>
+  </ul>
+
     <button class="content-button waves-effect waves-light z-depth-3" id="startGame" type="submit" name="action">Start the Game!<i class="mdi-content-send right"></i>
     </button>
   </div>
 </div>
 
 <script>
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
   document.getElementById("startGame").addEventListener('click', e => { changeAppPage('instructionsScreen') });
 </script>

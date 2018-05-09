@@ -43,7 +43,7 @@
   $(document).ready(function() {
     $('select').material_select();
   });
-
+  //HTML ELements
   const schoolInput = document.getElementById("schoolSelect");
   const groupInput = document.getElementById("groupInput");
   const schoolOutput = document.getElementById("schoolOutput");
@@ -55,6 +55,8 @@
   const btnCancel = document.getElementById("cancel");
   const btnLogout = document.getElementById("logout");
   const viewForm = document.getElementById("viewForm");
+
+  //Event Listeners
   btnEdit.addEventListener('click', e => {
     editForm.classList.remove('hide');
     viewForm.classList.add('hide');
@@ -80,7 +82,7 @@
     btnEdit.classList.remove('hide');
     btnLogout.classList.remove('hide');
     btnSave.classList.add('hide');
-    btnCancel.classList.remove('hide');
+    btnCancel.classList.add('hide');
     saveChanges();
   })
 
@@ -89,6 +91,7 @@
     changeAppPage("homeScreen");
   })
 
+  //Firebase Prep
   var database = firebase.database();
   var user = firebase.auth().currentUser;
   var name, email, photoUrl, uid;
@@ -114,9 +117,12 @@ function initUser(userId, name, email, photo) {
   setInfo();
 }
 
+//Populates the Profile using information collected from the current User.
 function displayProfile(school, group) {
   var profileBox = document.getElementById('accountInfo');
-  //Populates the Profile using information collected from the current User.
+  if (name == "null") {
+    name = (email.split('@')[0]);;
+  }
   $("<div>", {id: 'userInfo', class:'profileValue'})
     .append("<h2 id=\"userName\">" + name + "</h2>")
     //Apply photoUrl or apply Fallback image using onerror property
@@ -125,8 +131,9 @@ function displayProfile(school, group) {
     .appendTo(profileBox)
   }
 
+
+  //Snapshots the information object from database and applies any pre-existing information to the forms.
   function setInfo() {
-    //Snapshots the information object from database and applies any pre-existing information to the forms.
     return infoRef.once('value').then(function(snapshot) {
       if (snapshot.exists()) {
         schoolOutput.value = snapshot.val().school;

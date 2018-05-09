@@ -1,13 +1,52 @@
 <div class="content-box">
   <div class="content-box-inner">
     <h2>The Library</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p>Middlesbrough Campus Library offers a variety of study environments, in zones that are designated by floor.
+       The following details the use of each floor including information on food and drink in the library.
     </p>
+    <ul class="collapsible">
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">alternate_email</i>Succeed@Tees</div>
+      <div class="collapsible-body"><span>Succeed @ Tees is a series of informal workshops and seminars designed and created to help you become more effective learners with your studies at Teesside University. The workshops and seminars are full of useful information, tips and practical exercises to help you develop the skills you need to get the most from your studies and your student experience. Student & Library Services are committed to enhancing your potential in your academic studies, personal life and employment. If you need any adjustments to fully access the sessions, please contact libraryhelp@tees.ac.uk in advance.</span></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">book</i>Reading Lists Online</div>
+      <div class="collapsible-body"><span>Reading List Online (RLO) will allow you to easily manage your module reading, and ensures that academic resources are available and accessible to you.
+        The RLO for a module can also be accessed by logging on to the relevant E-learning@Tees  site.  If you are unable to find a RLO for a particular module, please contact your module leader about this.
+        Your module reading list contains details of items like books, journals, web pages or databases.
+        These items have been selected for you by your module leaders, so when you are doing coursework the reading list is the best place to start.
+        However, you can (and should) also read more widely - see the sections on 'Finding Books' and 'Finding Journal Articles' for more help.
+        </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">whatshot</i>Learning Hub</div>
+      <div class="collapsible-body"><span>The Learning Hub is a learning support centre provided by Student and Library Services in partnership with the University's Schools.
+        It is an inclusive service that is offered to all Teesside University students.
+        It provides a space both physical and virtual where you can discuss strategies and resources to help you fulfil your potential.
+        It provides a range of approaches for learning including drop-in, one-to-one tutorials and workshops.
+
+        For more information <a href="http://libguides.tees.ac.uk/ld.php?content_id=7297207" target="_blank">tap here</a>.
+        </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header header-on-white"><i class="material-icons">live_help</i>Libguides</div>
+      <div class="collapsible-body"><span>Libguides is our A-Z of hundreds of guides published by us to help you with whatever
+        library needs or queries you may have. If you've got a question, this is the place to start.
+        <br><br>
+        <a href="http://libguides.tees.ac.uk/?b=g&d=a" target="_blank"><button>Go to Libguides</button></a>
+        </span>
+        </div>
+    </li>
+  </ul>
+
     <button class="content-button waves-effect waves-light z-depth-3" id="startGame" type="submit" name="action">Start the Game!<i class="mdi-content-send right"></i>
     </button>
   </div>
 </div>
 
 <script>
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
   document.getElementById("startGame").addEventListener('click', e => { changeAppPage('instructionsScreen') });
 </script>

@@ -63,22 +63,39 @@ btnTwitter.addEventListener('click', e => extLogin(twitProvider))
 //Facebook Login
 
 function extLogin(provider) {
-  firebase.auth().signInWithRedirect(provider);
-  firebase.auth().getRedirectResult().then(result => {
-  var user = result.user;
-  if (result.credential) {
-    // This gives you an Access Token.
-    var token = result.credential.accessToken;
-  }
+//   firebase.auth().signInWithRedirect(provider);
+//   firebase.auth().getRedirectResult().then(result => {
+//   var user = result.user;
+//   if (result.credential) {
+//     // This gives you an Access Token.
+//     var token = result.credential.accessToken;
+//   }
+//   // The signed-in user info.
+//   if (result.user) {
+//     console.log("Beep")
+//     changeAppPage('accountScreen');
+//   }
+// }).catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   console.log(errorCode);
+//   var errorMessage = error.message;
+//   // The email of the user's account used.
+//   var email = error.email;
+//   // The firebase.auth.AuthCredential type that was used.
+//   var credential = error.credential;
+//   // ...
+// });
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
   // The signed-in user info.
-  if (result.user) {
-    console.log("Beep")
-    changeAppPage('accountScreen');
-  }
+  var user = result.user;
+  // ...
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
-  console.log(errorCode);
   var errorMessage = error.message;
   // The email of the user's account used.
   var email = error.email;

@@ -1,17 +1,21 @@
 <div class="content-box">
   <div class="content-box-inner">
     <h2>Leaderboard</h2>
-    <p>Lorem ipsum dolor sit amet</p>
+    <div id="leaderboard">
+
+    </div>
 
     <div class="input-field">
       <label class="active">Enter your time:</label>
-      <input id="scoreInput" value="00:00" type="text">
+      <input id="scoreInput" placeholder="Enter your time" type="number">
     </div>
     <button id="submitScore">Submit Score</button>
   </div>
 </div>
 
 <script>
+displayScores();
+
 var database = firebase.database();
 var user = firebase.auth().currentUser;
 var uid = user.uid;
@@ -28,6 +32,7 @@ function submitScore() {
         var groupName = snapshot.val().information.groupName;
         var groupScore = scoreInput.value;
         setScore(groupName, groupScore);
+        displayScores();
       }
     });
   }
@@ -45,7 +50,22 @@ function setScore(group, score) {
 }
 
 function displayScores() {
-  return userRef.once('value').then(function(snapshot) {
+  //Collects and displays the existing scores.
+  var scoreboardRef = firebase.database().ref('scores/')
+  return scoreboardRef.once('value').then(function(snapshot) {
     if (snapshot.exists()) {
+      console.log(snapshot.val())
+      var allScores = snapshot.val();
+      //Outputs the leaderboard to the dom
+      $.each(allScores, function(index, value) {
+        if (allScores[index].time == null) {
+        console.log(allScores[index].time);
+        $("<div>", {id: allScores[index].groupName, class:'scoreEntry'})
+          .append("<p class=\"groupName\">" + allScores[index].groupName + " - Finished in" + allScores[index].time + "m</p>")
+          .appendTo(document.getElementById("leaderboard"))
+        };
+        })
+      };
+    });
 }
 </script>

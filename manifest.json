@@ -1,0 +1,21 @@
+{
+  "name": "MyQuest",
+  "short_name": "MyQuest",
+  "icons": [
+        {
+            "src": "assets/myquest-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/myquest-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#4E43F9",
+  "orientation": "landscape"
+}

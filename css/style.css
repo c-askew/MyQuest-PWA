@@ -36,10 +36,13 @@ nav svg {
 }
 
 h1, h2, h3 {
+  font-family: 'Facile Sans', 'Roboto', sans-serif;
   color: #f1a513;
+  text-shadow: 1px 1px #000;
 }
 
 p {
+  font-size: 1.2rem;
   line-height: 2rem;
 }
 
@@ -66,7 +69,6 @@ p {
 .icon-block .material-icons {
   font-size: inherit;
 }
-
 
 
 /*Login Form*/
@@ -196,7 +198,7 @@ button {
 } */
 
 
-/*Game Pages*/
+/*Discover Pages*/
 video {
   margin: 0 auto;
   align-content: center;
@@ -228,6 +230,25 @@ video {
 .choice-box h2 {
   line-height: 150px;
   vertical-align: middle;
+}
+
+.header-on-white{
+  color: #4E43F9;
+  font-size: 1.2rem;
+}
+
+.collapsible-body {
+  font-size: 1.2rem;
+}
+
+a {
+  color: #f1a513;
+}
+
+table {
+  width: 45%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 @media only screen and (max-width : 992px) {
